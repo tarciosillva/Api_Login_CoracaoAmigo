@@ -44,7 +44,7 @@ class Jwt {
               },
               process.env.SECRET,
               {
-                expiresIn: "24h",
+                expiresIn: "12h",
               },
               (err, token) => {
                 if (err) {
