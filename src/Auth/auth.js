@@ -3,31 +3,6 @@ const jwt = require("jsonwebtoken");
 const UserRepository = require("../Repository/userRepository");
 
 class Jwt {
-  /* async autenticate(request, response, next) {
-    const authToken = request.headers["authorization"];
-
-    if (authToken != undefined) {
-      const bearer = authToken.split(" ");
-      var token = bearer[1];
-
-      jwt.verify(token, process.env.SECRET, (err, data) => {
-        if (err) {
-          response.status(401);
-          response.send("Token inválido");
-        } else {
-          request.token = token;
-          request.loggedUser = {
-            id: data._id,
-          };
-          next();
-        }
-      });
-    } else {
-      response.status(400);
-      response.send("Credencias de autenticação não foram providas");
-    }
-  }*/
-
   async authorization(request, response) {
     var email = request.body.email;
     var password = request.body.password;
@@ -41,10 +16,11 @@ class Jwt {
             jwt.sign(
               {
                 idReferenceRegister: User.idReferenceRegister,
+                typeUser:User.typeUser
               },
               process.env.SECRET,
               {
-                expiresIn: "12h",
+                expiresIn: "24h",
               },
               (err, token) => {
                 if (err) {
