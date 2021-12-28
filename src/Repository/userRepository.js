@@ -6,7 +6,9 @@ class UserRepository {
       return new Promise((resolve, reject) => {
         UserModel.Users.create(Objetc, (err, result) => {
           if (err) {
-            return reject(err);
+            if (err.code === 11000) {
+              reject("Este email já está registrado.");
+            }
           } else {
             return resolve(result);
           }
@@ -16,10 +18,10 @@ class UserRepository {
       return error;
     }
   }
-  async getUser(email, password) {
+  async getUser(email) {
     try {
       const result = await UserModel.Users.findOne({
-        $and: [{ email: email }, { password: password }],
+        email: email,
       });
       return result;
     } catch (error) {

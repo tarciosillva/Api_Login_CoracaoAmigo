@@ -4,7 +4,7 @@ const { Schema } = mongoose;
 
 const UserModel = new Schema({
   idReferenceRegister: String,
-  email: String,
+  email: {type: String, unique:true},
   password: String,
   typeUser: String,
 });

@@ -1,9 +1,9 @@
-const UserRepository = require("../Repository/userRepository");
+const UserService = require("../service/UserService")
 class UserController {
   async newUser(request, response) {
     const newUser = request.body;
     try {
-      const result = await UserRepository.newUser(newUser);
+      const result = await UserService.newUser(newUser);
       response.send(result);
     } catch (error) {
       console.log(error);

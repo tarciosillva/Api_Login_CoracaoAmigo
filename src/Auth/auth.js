@@ -1,16 +1,16 @@
 require("dotenv").config();
 const jwt = require("jsonwebtoken");
-const UserRepository = require("../Repository/userRepository");
-
+const UserService = require("../service/UserService")
 class Jwt {
   async authorization(request, response) {
     var email = request.body.email;
-    var password = request.body.password;
+    var textPassword = request.body.password;
 
     if (email != undefined && email != "") {
-      if (password != undefined && password != "") {
+      if (textPassword != undefined && textPassword != "") {
         try {
-          const User = await UserRepository.getUser(email, password);
+
+          const User = await UserService.identifyUser(email, textPassword)
 
           if (User) {
             jwt.sign(
@@ -36,7 +36,7 @@ class Jwt {
             );
           } else {
             response.status(404);
-            response.send("Usuário não existe, informe ao desenvolvedor!");
+            response.send("Usuário não encontrado, verifique suas credencias de Login!");
           }
         } catch (error) {
           console.log(error);
