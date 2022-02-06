@@ -4,7 +4,7 @@ module.exports = {
             name: "ApiLogin-arquitetool",
             script: "./index.js",
             append_env_to_name: true,
-            env_productionteste: {
+            env_production: {
                 PORT: process.env.APP_PORT,
                 URI: process.env.APP_URI,
                 SECRET: process.env.APP_SECRET,
