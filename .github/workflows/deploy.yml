@@ -27,4 +27,4 @@ jobs:
         echo "$SSH_KEY" > ~/.ssh/deploy.key
         sudo chmod 600 ~/.ssh/deploy.key
 
-        pm2 deploy app --force
+        pm2 deploy ApiLogin --force
