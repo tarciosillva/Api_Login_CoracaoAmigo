@@ -5,7 +5,7 @@ class UserService {
     try {
       const user = await UserRepository.getUser(email);
       if (user) {
-        const compareHash = bcript.compareSync(textPassword, user.password);
+        const compareHash = bcript.compare(textPassword, user.password);
         if (compareHash) {
           return user;
         } else {
