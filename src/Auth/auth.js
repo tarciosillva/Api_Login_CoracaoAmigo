@@ -9,7 +9,6 @@ class Auth {
       if (textPassword != undefined && textPassword != "") {
         try {
           const User = await UserService.identifyUser(email, textPassword);
-
           const result = await Jwt.newJwt(User);
 
           if (result === "internal error") {
