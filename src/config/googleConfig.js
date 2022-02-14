@@ -4,7 +4,7 @@ const googleConfig = {
   clientId:
     "636725004486-76vsd2lkqo67m1la9pe2n6gnde2p9v9e.apps.googleusercontent.com",
   clientSecret: "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",
-  redirect: ["https://app.arquitetool.com.br/validadeSocialLogin"],
+  redirect: ["https://app.arquitetool.com.br/validateSocialLogin"],
 };
 
 const googleConnection = () => {
