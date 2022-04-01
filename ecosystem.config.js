@@ -6,7 +6,7 @@ module.exports = {
             append_env_to_name: true,
             env_production: {
                 PORT: process.env.APP_PORT,
-                URI: 'mongodb+srv://arquitetoolMongoProduction:MJTEGA4aIxCfAOmO@arquitetoolcluster.qhk6c.mongodb.net/arquitetool?retryWrites=true&w=majority',
+                URI: 'mongodb+srv://furnit:puvEVVHZeYoKUR1d@furnit.u0xms.mongodb.net/FurnitDB?retryWrites=true&w=majority',
                 SECRET: process.env.APP_SECRET,
             }
         }],
