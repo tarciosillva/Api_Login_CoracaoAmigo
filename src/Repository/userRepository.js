@@ -1,10 +1,10 @@
 const UserModel = require("../model/userModel");
 
 class UserRepository {
-  async getUser(email) {
+  async getUser(email, password) {
     try {
       const result = await UserModel.Users.findOne({
-        email: email,
+        email: email
       });
       return result;
     } catch (error) {
@@ -15,14 +15,11 @@ class UserRepository {
   async updategoogleUserId(_id, googleUserId) {
     console.log(_id, googleUserId)
     try {
-      await UserModel.Users.updateOne(
-        {
-          _id: _id,
-        },
-        {
-          googleUserId: googleUserId,
-        }
-      );
+      await UserModel.Users.updateOne({
+        _id: _id,
+      }, {
+        googleUserId: googleUserId,
+      });
     } catch (error) {
       return error;
     }
