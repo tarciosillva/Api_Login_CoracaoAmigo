@@ -16,8 +16,8 @@ class Jwt {
           },
           (err, token) => {
             if (err) {
-              console.log(err)
-              reject("internal error");
+              console.error(err)
+              reject("internal error" + err);
             } else {
               resolve({ token: token });
             }

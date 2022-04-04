@@ -9,29 +9,22 @@ class Auth {
       if (textPassword) {
         try {
           const User = await UserService.identifyUser(email, textPassword);
-
-          if (User) {
-            const result = await Jwt.newJwt(User);
-            if (result === "internal error") {
-              response.send("Erro interno");
-            } else if (result === "User not found") {
-              response.send("Usuário não encontrado!");
-            } else {
-              response.send(result);
-            }
+          const result = await Jwt.newJwt(User);
+          if (result === "internal error") {
+            response.sendStatus(500);
+          } else if (result === "User not found") {
+            response.sendStatus(404)
           } else {
-            return undefined
+            response.send(result)
           }
         } catch (error) {
-          console.log(error);
+          console.error(error);
         }
       } else {
-        response.status(404);
-        response.send("Senha inválida");
+        response.sendStatus(404)
       }
     } else {
-      response.status(404);
-      response.send("Email inválido");
+      response.sendStatus(404)
     }
   }
 }
