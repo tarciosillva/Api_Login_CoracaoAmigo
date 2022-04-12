@@ -20,6 +20,6 @@ module.exports = {
           repo : "git@apiloginalias:tarciosillva/ApiLoginArquitetool.git",
           path : "/root/app",
           "post-deploy" : "yarn install && pm2 startOrRestart ecosystem.config.js --env production"
-        },
+        }
     }
 }
