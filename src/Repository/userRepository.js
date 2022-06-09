@@ -1,25 +1,16 @@
-const UserModel = require("../model/userModel");
+const UserModel = require("../models/Usuario");
 
 class UserRepository {
   async getUser(email, password) {
     try {
-      const result = await UserModel.Users.findOne({
-        email: email
-      });
+      const result = await UserModel.findOne({
+        where:{
+          email:email,
+          perfil:'Diretor'
+        },
+        attributes:['id','nome','email','senha','cpf','telefone','perfil']
+      })
       return result;
-    } catch (error) {
-      return error;
-    }
-  }
-
-  async updategoogleUserId(_id, googleUserId) {
-    console.log(_id, googleUserId)
-    try {
-      await UserModel.Users.updateOne({
-        _id: _id,
-      }, {
-        googleUserId: googleUserId,
-      });
     } catch (error) {
       return error;
     }

@@ -3,12 +3,12 @@ const Jwt = require("./Jwt");
 class Auth {
   async authorization(request, response) {
     var email = request.body.email;
-    var textPassword = request.body.password;
-
+    var password = request.body.password;
     if (email) {
-      if (textPassword) {
+      if (password) {
         try {
-          const User = await UserService.identifyUser(email, textPassword);
+          const User = await UserService.identifyUser(email, password);
+
           const result = await Jwt.newJwt(User);
           if (result === "internal error") {
             response.sendStatus(500);

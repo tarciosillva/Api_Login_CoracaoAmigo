@@ -1,17 +1,14 @@
 require("dotenv").config();
 const jwt = require("jsonwebtoken");
-
 class Jwt {
   newJwt(User) {
     if (User) {
       return new Promise((resolve, reject) => {
-        jwt.sign(
-          {
-            idReferenceRegister: User.idReferenceRegister,
-            typeUser: User.typeUser,
+        jwt.sign({
+            id: User.dataValues.id,
+            perfil: User.dataValues.perfil
           },
-          process.env.SECRET,
-          {
+          process.env.SECRET, {
             expiresIn: "24h",
           },
           (err, token) => {
@@ -19,7 +16,9 @@ class Jwt {
               console.error(err)
               reject("internal error" + err);
             } else {
-              resolve({ token: token });
+              resolve({
+                token: token
+              });
             }
           }
         );

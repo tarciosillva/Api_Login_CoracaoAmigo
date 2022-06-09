@@ -1,5 +1,5 @@
 {
-  "name": "ApiLogin",
+  "name": "ApiLoginCoracaoAmigo",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -17,8 +17,8 @@
     "express": "^4.17.1",
     "googleapis": "^92.0.0",
     "jsonwebtoken": "^8.5.1",
-    "mongodb": "^4.2.2",
-    "mongoose": "^6.1.2",
-    "nodemon": "^2.0.15"
+    "mysql2": "^2.3.3",
+    "nodemon": "^2.0.15",
+    "sequelize": "^6.19.0"
   }
 }
